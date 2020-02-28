@@ -1,0 +1,14 @@
+{
+  "name": "fileupload-backend",
+  "version": "1.0.0",
+  "description": "Backend for the file upload service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fileupload"
+  ],
+  "author": "Karoly Pakozdi",
+  "license": "ISC"
+}
