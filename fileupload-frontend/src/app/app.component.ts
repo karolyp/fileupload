@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,10 @@ export class AppComponent {
 
   appName = 'FileUpload';
 
-  constructor() {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'gugli',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/btn_google_dark_normal_ios.svg'));
   }
 
 }
