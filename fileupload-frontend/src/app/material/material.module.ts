@@ -8,6 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 const modules = [
   MatSliderModule,
@@ -18,7 +19,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatDividerModule
 ];
 
 @NgModule({

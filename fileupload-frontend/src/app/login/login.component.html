@@ -1,23 +1,35 @@
-<div class="login-form-flex">
-  <mat-card>
-    <mat-card-title>
-      Bejelentkezés
-    </mat-card-title>
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>emoji_people</mat-icon>
+      <mat-card-title>
+        Hello!
+      </mat-card-title>
+      <mat-card-subtitle>Kérlek jelentkezz be!</mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
-      <mat-form-field>
-        <input matInput placeholder="Felhasználónév">
-      </mat-form-field>
-      <br/>
-      <mat-form-field>
-        <input type="password" matInput placeholder="Jelszó">
-      </mat-form-field>
+      <form>
+        <mat-form-field>
+          <mat-label>Felhasználónév</mat-label>
+          <input matInput/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Jelszó</mat-label>
+          <input matInput type="password"/>
+        </mat-form-field>
+        <div class="login-button-section">
+          <button mat-raised-button color="primary">Belépés</button>
+          <div class="or">
+            vagy
+          </div>
+          <button mat-raised-button>
+            <mat-icon svgIcon="gugli">
+            </mat-icon>
+            Belépés Guglival
+          </button>
+        </div>
+      </form>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-flat-button color="primary">Belépés</button>
-      <button mat-flat-button color="primary">
-        <mat-icon svgIcon="gugli"></mat-icon>
-        Belépés Google-lal
-      </button>
-    </mat-card-actions>
   </mat-card>
 </div>
