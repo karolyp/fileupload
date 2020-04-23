@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {RegistrationService} from '../_services/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,8 +14,9 @@ export class RegistrationComponent implements OnInit {
     email: [null, [Validators.required, Validators.email]],
     recaptcha: [null, Validators.required]
   });
+  registrationInProgress = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService) {
   }
 
   ngOnInit(): void {
@@ -29,5 +32,14 @@ export class RegistrationComponent implements OnInit {
 
   onStrengthChanged($event: number) {
     console.log($event);
+  }
+
+  onSubmit() {
+    // const snackBarRef = this.snackBar.open('Message archived');
+    this.registrationInProgress = true;
+    this.registrationService.registerUser(this.registrationForm.value)
+      .subscribe(res => {
+        this.registrationInProgress = false;
+      });
   }
 }

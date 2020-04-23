@@ -10,6 +10,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const modules = [
   MatSliderModule,
@@ -22,7 +24,9 @@ const modules = [
   MatTabsModule,
   MatCardModule,
   MatDividerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatProgressBarModule
 ];
 
 @NgModule({
