@@ -1,0 +1,16 @@
+mat-form-field {
+  width: 100%;
+}
+
+.captcha {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-btn {
+  margin-top: 1rem;
+  width: 100%;
+}

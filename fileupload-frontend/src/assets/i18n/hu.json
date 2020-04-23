@@ -1,0 +1,22 @@
+{
+  "password": {
+    "password": "Jelszó",
+    "passwordIsRequired": "A jelszó kitöltése kötelező!",
+    "passwordNotMeetRequirements": "A jelszó nem felel meg a követelményeknek!",
+    "showPasswordRequirements": "Jelszó követelmények mutatása",
+    "LOWER_CASE_CRITERIA_MSG": "legalább egy kisbetű",
+    "UPPER_CASE_CRITERIA_MSG": "legalább egy nagybetű",
+    "DIGITS_CRITERIA_MSG": "legalább egy szám",
+    "SPECIAL_CHARS_CRITERIA_MSG": "legalább egy speciális karakter",
+    "MIN_CHARS_CRITERIA_MSG": "legalább {{value}} karakter"
+  },
+  "registration": {
+    "title": "Regisztráció",
+    "fillFormToRegister": "A regisztrációhoz töltsd ki az alábbi űrlapot!",
+    "email": {
+      "emailAddress": "E-mail cím",
+      "emailIsRequired": "Az e-mail cím megadása kötelező!",
+      "emailNotValid": "Az e-mail cím nem megfelelő formátumú!"
+    }
+  }
+}
