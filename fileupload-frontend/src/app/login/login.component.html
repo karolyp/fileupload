@@ -5,27 +5,33 @@
       <mat-card-title>
         Hello!
       </mat-card-title>
-      <mat-card-subtitle>Kérlek jelentkezz be!</mat-card-subtitle>
+      <mat-card-subtitle>
+        {{ 'login.pleaseLogIn' | translate }}
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <form>
         <mat-form-field>
-          <mat-label>E-mail cím</mat-label>
-          <input matInput/>
+          <mat-label>
+            {{ 'email.emailAddress' | translate }}
+          </mat-label>
+          <input matInput required/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Jelszó</mat-label>
-          <input matInput type="password"/>
+          <mat-label>{{ 'password.password' | translate }}</mat-label>
+          <input matInput required type="password"/>
         </mat-form-field>
         <div class="login-button-section">
-          <button mat-raised-button color="primary">Belépés</button>
+          <button mat-raised-button color="primary">
+            {{ 'login.logIn' | translate }}
+          </button>
           <div class="or">
-            vagy
+            {{ 'login.or' | translate }}
           </div>
           <button mat-raised-button>
             <mat-icon svgIcon="gugli">
             </mat-icon>
-            Belépés Guglival
+            {{ 'login.loginWithGoogle' | translate }}
           </button>
         </div>
       </form>

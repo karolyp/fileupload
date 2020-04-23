@@ -12,11 +12,18 @@
   },
   "registration": {
     "title": "Regisztráció",
-    "fillFormToRegister": "A regisztrációhoz töltsd ki az alábbi űrlapot!",
-    "email": {
-      "emailAddress": "E-mail cím",
-      "emailIsRequired": "Az e-mail cím megadása kötelező!",
-      "emailNotValid": "Az e-mail cím nem megfelelő formátumú!"
-    }
+    "fillFormToRegister": "A regisztrációhoz töltsd ki az alábbi űrlapot!"
+  },
+  "login": {
+    "pleaseLogIn": "Kérlek jelentkezz be!",
+    "logIn": "Belépés",
+    "logInFormal": "Bejelentkezés",
+    "or": "vagy",
+    "loginWithGoogle": "Belépés Google-lel"
+  },
+  "email": {
+    "emailAddress": "E-mail cím",
+    "emailIsRequired": "Az e-mail cím megadása kötelező!",
+    "emailNotValid": "Az e-mail cím nem megfelelő formátumú!"
   }
 }

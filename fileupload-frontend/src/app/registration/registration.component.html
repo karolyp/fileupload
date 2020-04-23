@@ -10,10 +10,10 @@
     <mat-card-content>
       <form [formGroup]="registrationForm">
         <mat-form-field appearance="outline">
-          <mat-label>{{ 'registration.email.emailAddress' | translate }}</mat-label>
+          <mat-label>{{ 'email.emailAddress' | translate }}</mat-label>
           <input matInput required formControlName="email"/>
-          <mat-error *ngIf="email.errors?.required">{{ 'registration.email.emailIsRequired' | translate}}</mat-error>
-          <mat-error *ngIf="email.errors?.email">{{ 'registration.email.emailNotValid' | translate }}</mat-error>
+          <mat-error *ngIf="email.errors?.required">{{ 'email.emailIsRequired' | translate}}</mat-error>
+          <mat-error *ngIf="email.errors?.email">{{ 'email.emailNotValid' | translate }}</mat-error>
         </mat-form-field>
         <div>
           <mat-form-field appearance="outline" [color]="passwordValidator.color">
