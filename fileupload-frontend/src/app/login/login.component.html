@@ -10,16 +10,18 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form>
-        <mat-form-field>
+      <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
+        <mat-form-field appearance="outline">
           <mat-label>
             {{ 'email.emailAddress' | translate }}
           </mat-label>
-          <input matInput required/>
+          <input matInput required formControlName="email"/>
+          <mat-error *ngIf="email.errors?.required">{{ 'email.emailIsRequired' | translate}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>{{ 'password.password' | translate }}</mat-label>
-          <input matInput required type="password"/>
+          <input matInput required type="password" formControlName="password">
+          <mat-error *ngIf="password.errors?.required">{{ 'password.passwordIsRequired' | translate}}</mat-error>
         </mat-form-field>
         <div class="login-button-section">
           <button mat-raised-button color="primary">

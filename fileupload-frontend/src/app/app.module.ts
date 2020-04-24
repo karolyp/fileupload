@@ -8,17 +8,24 @@ import {MaterialModule} from './material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
-import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HomeComponent} from './home/home.component';
+import {LoginService} from './_services/login.service';
+import {RegistrationService} from './_services/registration.service';
+import {AuthGuard} from './auth.guard';
+import {TokenInterceptorService} from './_services/token-interceptor.service';
+import {AuthService} from './_services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,11 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
       defaultLanguage: 'hu'
     })
   ],
-  providers: [],
+  providers: [LoginService, RegistrationService, AuthService, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

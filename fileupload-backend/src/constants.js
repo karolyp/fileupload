@@ -1,3 +1,6 @@
-const APP_PORT = process.env.APP_PORT;
+const APP_PORT = process.env.APP_PORT || 8080;
+const MONGODB_CONNECTION_STRING = process.env.MONGODB_CONNECTION_STRING;
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+const JWT_EXPIRATION = process.env.JWT_EXPIRATION;
 
-module.exports = { APP_PORT };
+module.exports = {APP_PORT, MONGODB_CONNECTION_STRING, JWT_SECRET_KEY, JWT_EXPIRATION};

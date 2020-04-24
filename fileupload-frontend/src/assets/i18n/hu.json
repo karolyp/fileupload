@@ -12,7 +12,8 @@
   },
   "registration": {
     "title": "Regisztráció",
-    "fillFormToRegister": "A regisztrációhoz töltsd ki az alábbi űrlapot!"
+    "fillFormToRegister": "A regisztrációhoz töltsd ki az alábbi űrlapot!",
+    "successAndRedirect": "Sikeres regisztráció, átirányítás a bejelentkezéshez..."
   },
   "login": {
     "pleaseLogIn": "Kérlek jelentkezz be!",

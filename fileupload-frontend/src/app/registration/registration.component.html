@@ -1,6 +1,9 @@
-<mat-progress-bar mode="query" *ngIf="registrationInProgress"></mat-progress-bar>
 <div class="center">
-  <mat-card>
+  <div style="flex: 1 auto; width: 100%">
+    <mat-progress-bar color="accent" mode="query" *ngIf="registrationInProgress"></mat-progress-bar>
+  </div>
+  <div style="flex: 1 auto">
+  <mat-card style="align-self: center; justify-self: center">
     <mat-card-header>
       <mat-icon mat-card-avatar>person_add</mat-icon>
       <mat-card-title>
@@ -19,9 +22,9 @@
         <div>
           <mat-form-field appearance="outline" [color]="passwordValidator.color">
             <mat-label>{{'password.password' | translate }}</mat-label>
-            <mat-pass-toggle-visibility #toggleVisbility matSuffix></mat-pass-toggle-visibility>
+            <mat-pass-toggle-visibility #toggleVisibility matSuffix></mat-pass-toggle-visibility>
             <input matInput #password
-                   [type]="toggleVisbility.type" required
+                   [type]="toggleVisibility.type" required
                    [formControl]="passwordValidator.passwordFormControl"
                    [placeholder]="'password.password' | translate">
             <mat-hint align="end" aria-live="polite">
@@ -35,7 +38,6 @@
             </mat-error>
           </mat-form-field>
           <mat-password-strength #passwordValidator
-                                 (onStrengthChanged)="onStrengthChanged($event)"
                                  [enableSpecialCharRule]="false"
                                  [password]="password.value">
           </mat-password-strength>
@@ -51,15 +53,15 @@
           </mat-password-strength-info>
         </div>
         <div class="captcha">
-          <re-captcha formControlName="recaptcha" (resolved)="resolved($event)"
-                      siteKey="6LctD-0UAAAAANDWMV8Z-3_5nN9PmTXQXmWJcEB6"></re-captcha>
+          <re-captcha formControlName="recaptcha" siteKey="6LctD-0UAAAAANDWMV8Z-3_5nN9PmTXQXmWJcEB6"></re-captcha>
         </div>
         <button class="register-btn" mat-raised-button color="primary"
-                [disabled]="registrationForm.invalid || passwordValidator.passwordFormControl.invalid">
+                [disabled]="registrationForm.invalid || passwordValidator.passwordFormControl.invalid || registered">
           Regisztráció
         </button>
       </form>
     </mat-card-content>
   </mat-card>
+  </div>
 </div>
 

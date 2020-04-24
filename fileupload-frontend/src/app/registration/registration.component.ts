@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {RegistrationService} from '../_services/registration.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -10,36 +11,64 @@ import {RegistrationService} from '../_services/registration.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm = this.fb.group({
-    email: [null, [Validators.required, Validators.email]],
-    recaptcha: [null, Validators.required]
-  });
-  registrationInProgress = false;
 
-  constructor(private fb: FormBuilder, private registrationService: RegistrationService) {
-  }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService, private cdr: ChangeDetectorRef,
+              private snackBar: MatSnackBar, private router: Router) {
   }
 
   get email() {
     return this.registrationForm.get('email');
   }
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  @ViewChild('passwordValidator')
+  passwordValidator: any;
+
+  registrationForm = this.fb.group({
+    email: [null, [Validators.required, Validators.email]],
+    recaptcha: [null, Validators.required]
+  });
+  registrationInProgress = false;
+  registered = false;
+
+  private SNACKBAR_DURATION = 5000;
+
+  ngOnInit(): void {
   }
 
-  onStrengthChanged($event: number) {
-    console.log($event);
+  stopProgressBar() {
+    this.registrationInProgress = false;
+    this.cdr.detectChanges();
   }
 
   onSubmit() {
-    // const snackBarRef = this.snackBar.open('Message archived');
     this.registrationInProgress = true;
-    this.registrationService.registerUser(this.registrationForm.value)
-      .subscribe(res => {
-        this.registrationInProgress = false;
-      });
+    const email = this.registrationForm.get('email').value;
+    const password = this.passwordValidator.passwordFormControl.value;
+
+    this.registrationService.registerUser({email, password}).subscribe(
+      res => {
+        this.registered = true;
+        this.stopProgressBar();
+        const snackbarRef = this.snackBar.open('Sikeres regisztráció, átirányítás a bejelentkezéshez...', 'Bezár', { // TODO: i18n
+          duration: this.SNACKBAR_DURATION
+        });
+        snackbarRef.afterDismissed().subscribe(() => {
+          this.router.navigate(['/login']);
+        });
+      },
+      error => {
+        this.stopProgressBar();
+        this.registrationForm.get('recaptcha').reset();
+        if (error.status === 409) {
+          this.snackBar.open('Sikertelen regisztráció, az e-mail cím már regiszrálva van.', 'Bezár', { // TODO: i18n
+            duration: this.SNACKBAR_DURATION
+          });
+        } else {
+          this.snackBar.open('Hiba a kiszolgálóval, kérlek próbáld újra.', 'Bezár', { // TODO: i18n
+            duration: this.SNACKBAR_DURATION
+          });
+        }
+      },
+    );
   }
 }

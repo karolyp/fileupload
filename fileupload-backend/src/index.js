@@ -1,26 +1,34 @@
 const express = require('express');
+const passport = require('passport');
+const cors = require('cors');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 require('dotenv').config();
-const { APP_PORT } = require('./constants');
-const parameterStoreService = require('./services/parameterStoreService');
+const routes = require('./routes');
 
-const loadSecrets = async () => {
-  const cica = await parameterStoreService.getSecret('cica');
-  console.log(cica);
-};
+const {APP_PORT} = require('./constants');
+const {MONGODB_CONNECTION_STRING} = require('./constants');
 
-loadSecrets().then(() => {
-  const app = express();
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
 
-  app.get('/', (req, res) => {
-    res.status(200).send('<h1>Hello!</h1>');
-  });
+const {localStrategy, jwtStrategy} = require('./auth/strategies');
+const app = express();
 
-  app.listen(APP_PORT, () => {
+mongoose.connect(MONGODB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+
+mongoose.connection.on('connected', () => {
+    console.log('Connected to MongoDB.');
+});
+
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use('/api', routes);
+
+passport.use('local', localStrategy);
+passport.use('jwt', jwtStrategy);
+app.use(passport.initialize());
+
+
+app.listen(APP_PORT, () => {
     console.log(`App started on port ${APP_PORT}.`);
-  });
-}).catch((error) => {
-  console.log(`Error during fetching parameters: ${error.code}`);
 });
