@@ -17,7 +17,7 @@ before_script:
   - npm install
 
 script:
-  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
+  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then cd fileupload-frontend && npm run build; else echo "not a build branch"; fi
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR
