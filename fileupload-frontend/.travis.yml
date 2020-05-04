@@ -1,0 +1,39 @@
+
+language: node_js
+
+node_js:
+  - 12.10.0
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+    - staging
+    - master
+
+before_script:
+  - npm install
+
+script:
+  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
+
+before_deploy:
+  - cd $TRAVIS_BUILD_DIR
+  - sed -i '/dist/d' .gitignore
+  - git add . && git commit -m "latest build"
+
+deploy:
+  - provider: elasticbeanstalk
+    access_key_id: ${AWS_ACCESS_KEY_ID}             // You have use environment variable name instead of plain text
+    secret_access_key: ${AWS_SECRET_ACCESS_KEY}     // You have use environment variable name instead of plain text
+    region: "eu-central-1"            // "ap-south-1"
+    app: "fileupload-frontend"                     // "demo-application"
+    env: "FileuploadFrontend-env"                     // "demo-production"
+    bucket_name: "fileupload-frontend-bucket" // Once you create new application, it will automatically create a unique bucket for it.
+    on:
+      branch: master
+
+after_deploy:
+  - echo "Applcation Deployed!"
