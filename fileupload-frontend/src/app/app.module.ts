@@ -19,6 +19,7 @@ import {RegistrationService} from './_services/registration.service';
 import {AuthGuard} from './auth.guard';
 import {TokenInterceptorService} from './_services/token-interceptor.service';
 import {AuthService} from './_services/auth.service';
+import {NotLoggedInGuard} from './not-logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {AuthService} from './_services/auth.service';
       defaultLanguage: 'hu'
     })
   ],
-  providers: [LoginService, RegistrationService, AuthService, AuthGuard, {
+  providers: [LoginService, RegistrationService, AuthService, AuthGuard, NotLoggedInGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

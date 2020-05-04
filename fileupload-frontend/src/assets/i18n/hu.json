@@ -26,5 +26,6 @@
     "emailAddress": "E-mail cím",
     "emailIsRequired": "Az e-mail cím megadása kötelező!",
     "emailNotValid": "Az e-mail cím nem megfelelő formátumú!"
-  }
+  },
+  "logout": "Kijelentkezés"
 }

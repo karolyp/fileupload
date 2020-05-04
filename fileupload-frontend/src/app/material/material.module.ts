@@ -26,7 +26,8 @@ const modules = [
   MatDividerModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatDividerModule
 ];
 
 @NgModule({

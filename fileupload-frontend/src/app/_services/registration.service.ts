@@ -11,6 +11,6 @@ export class RegistrationService {
   }
 
   registerUser(userData): Observable<any> {
-    return this.http.post<any>(environment.API_URL, userData);
+    return this.http.post<any>(`${environment.API_URL}/register`, userData);
   }
 }
