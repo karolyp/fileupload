@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         });
         snackBarRef.afterDismissed().subscribe(() => {
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/my-files']);
         });
       },
       error => {

@@ -1,0 +1,17 @@
+<div class="upload-container">
+  <div class="dropzone"
+       appDragNDrop
+       (hovered)="toggleHover($event)"
+       (dropped)="onDrop($event)"
+       [class.hovering]="isHovering">
+    <div>
+      <mat-icon class="upload-icon">cloud_upload</mat-icon>
+    </div>
+    <h3>Húzd ide a fájlokat a feltöltéshez,</h3>
+    <h3>vagy</h3>
+    <div>
+      <button mat-stroked-button color="primary" [disabled]="isHovering">Fájl kiválasztása</button>
+    </div>
+  </div>
+
+</div>

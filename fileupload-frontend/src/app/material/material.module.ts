@@ -12,6 +12,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
 
 const modules = [
   MatSliderModule,
@@ -27,7 +30,10 @@ const modules = [
   MatSlideToggleModule,
   MatSnackBarModule,
   MatProgressBarModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSidenavModule,
+  MatMenuModule,
+  MatListModule
 ];
 
 @NgModule({

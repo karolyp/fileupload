@@ -11,10 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
-    iconRegistry.addSvgIcon(
-      'gugli',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/btn_google_dark_normal_ios.svg'));
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private authService: AuthService, private router: Router,
+              private snackBar: MatSnackBar) {
+    iconRegistry.addSvgIcon('gugli', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/btn_google_dark_normal_ios.svg'));
   }
 
   get isLoggedIn() {

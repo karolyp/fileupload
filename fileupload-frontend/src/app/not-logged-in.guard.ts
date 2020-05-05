@@ -19,7 +19,7 @@ export class NotLoggedInGuard implements CanActivate {
     return this.authService.verifyToken().pipe(
       map(userLoggedIn => {
         if (userLoggedIn) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/my-files']);
         }
         return !userLoggedIn;
       }),

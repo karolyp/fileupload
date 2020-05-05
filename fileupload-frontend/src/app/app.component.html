@@ -1,28 +1,52 @@
-<div id = "wrapper">
+<div id="wrapper">
   <div class="header">
-      <mat-toolbar color="primary" class="header">
-        <mat-icon id="cloud-up">cloud_upload</mat-icon>
-        <span>FileUpload</span>
-        <span class="fill-remaining-space"></span>
-        <ng-container *ngIf="isLoggedIn">
-          <button mat-flat-button color="primary" (click)="logOut()">
-            <mat-icon>exit_to_app</mat-icon>
-            {{ 'logout' | translate }}
-          </button>
-        </ng-container>
-        <ng-container *ngIf="!isLoggedIn">
-            <button mat-flat-button color="primary" routerLink="/login">
-                <mat-icon>account_circle</mat-icon>
-              {{ 'login.logInFormal' | translate }}
-            </button>
-          <button mat-flat-button color="primary" routerLink="/register">
-                <mat-icon>how_to_reg</mat-icon>
-            {{ 'registration.title' | translate }}
-            </button>
-        </ng-container>
-      </mat-toolbar>
+    <mat-toolbar color="primary" class="header">
+      <mat-icon id="cloud-up">cloud_upload</mat-icon>
+      <span>FileUpload</span>
+      <span class="fill-remaining-space"></span>
+      <ng-container *ngIf="isLoggedIn">
+        <button mat-flat-button color="primary" (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          {{ 'logout' | translate }}
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-flat-button color="primary" routerLink="/login">
+          <mat-icon>account_circle</mat-icon>
+          {{ 'login.logInFormal' | translate }}
+        </button>
+        <button mat-flat-button color="primary" routerLink="/register">
+          <mat-icon>how_to_reg</mat-icon>
+          {{ 'registration.title' | translate }}
+        </button>
+      </ng-container>
+    </mat-toolbar>
   </div>
   <div class="fill-remaining-space">
-    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav mode="side" [opened]="isLoggedIn">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/upload">
+            <mat-icon mat-list-icon>cloud_upload</mat-icon>
+            Feltöltés
+          </a>
+          <a mat-list-item routerLink="/my-files">
+            <mat-icon mat-list-icon>folder_open</mat-icon>
+            Fájljaim
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div id="main-container">
+          <div id="main-content">
+            <router-outlet></router-outlet>
+          </div>
+          <div>
+            <footer id="footer-copyright">Copyright © 2020, Pákozdi Károly, PRF kötelező program</footer>
+          </div>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
 </div>
+

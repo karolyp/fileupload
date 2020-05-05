@@ -13,20 +13,24 @@ import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HomeComponent} from './home/home.component';
 import {LoginService} from './_services/login.service';
 import {RegistrationService} from './_services/registration.service';
 import {AuthGuard} from './auth.guard';
 import {TokenInterceptorService} from './_services/token-interceptor.service';
 import {AuthService} from './_services/auth.service';
 import {NotLoggedInGuard} from './not-logged-in.guard';
+import { UploadComponent } from './upload/upload.component';
+import { DragNDropDirective } from './drag-n-drop.directive';
+import { MyFilesComponent } from './my-files/my-files.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    HomeComponent,
+    UploadComponent,
+    DragNDropDirective,
+    MyFilesComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,10 +7,26 @@
 .header {
   flex: 0 0 auto;
 }
+
 #cloud-up {
   margin-right: 8px;
 }
 
 .fill-remaining-space {
   flex: 1 1 auto;
+}
+
+mat-sidenav-container, #main-container, #main-content {
+  height: 100%
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+#footer-copyright {
+  text-align: right;
+  font-size: small
 }
