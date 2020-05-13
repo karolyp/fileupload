@@ -10,8 +10,44 @@
     <h3>Húzd ide a fájlokat a feltöltéshez,</h3>
     <h3>vagy</h3>
     <div>
-      <button mat-stroked-button color="primary" [disabled]="isHovering">Fájl kiválasztása</button>
+      <input
+        hidden
+        type="file"
+        #uploader
+        (change)="onChangeEvent($event)"
+      />
+      <button mat-raised-button color="primary" (click)="uploader.click()" [disabled]="isHovering">Fájl kiválasztása
+      </button>
     </div>
+  </div>
+  <div *ngIf="files.length > 0">
+    Feltölteni kívánt fájlok száma: {{files.length}} db
+  </div>
+  <div>
+    <button mat-raised-button color="primary" [disabled]="!files.length || files.length > 10" (click)="doUpload($event)">
+      Feltöltés
+    </button>
+  </div>
+  <div style="display: flex; align-content: flex-start; width: 100%; flex-wrap: wrap;">
+    <mat-card *ngFor="let file of files" style="margin: 5px">
+      <mat-card-header>
+        <mat-card-title>
+          <a [matTooltip]="file.name" matTooltipPosition="above" matTooltipShowDelay="300"
+             [matTooltipDisabled]="file.name.length <= 30">
+            {{file.name | slice:0:30 }}
+          </a>
+        </mat-card-title>
+        <mat-card-subtitle>{{getFileType(file)}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        Mérete: {{file.size | filesize}}
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-mini-fab color="warn" (click)="removeFile(file)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 
 </div>

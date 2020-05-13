@@ -13,11 +13,15 @@ export class AuthService {
   }
 
   verifyToken(): Observable<boolean> {
-    if (localStorage.getItem('token') === null) {
+    if (!localStorage.getItem('token')) {
       return of(false);
     }
     return this.http.post<any>(`${environment.API_URL}/verify`, {}).pipe(
-      map(res => res && res.verified)
+      map(res => res && res.verified),
+      catchError(err => {
+        localStorage.removeItem('token');
+        return of(false);
+      })
     );
   }
 

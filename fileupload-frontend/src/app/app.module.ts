@@ -8,7 +8,7 @@ import {MaterialModule} from './material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
-import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -19,9 +19,10 @@ import {AuthGuard} from './auth.guard';
 import {TokenInterceptorService} from './_services/token-interceptor.service';
 import {AuthService} from './_services/auth.service';
 import {NotLoggedInGuard} from './not-logged-in.guard';
-import { UploadComponent } from './upload/upload.component';
-import { DragNDropDirective } from './drag-n-drop.directive';
-import { MyFilesComponent } from './my-files/my-files.component';
+import {UploadComponent} from './upload/upload.component';
+import {DragNDropDirective} from './drag-n-drop.directive';
+import {MyFilesComponent} from './my-files/my-files.component';
+import {NgxFilesizeModule} from 'ngx-filesize';
 
 @NgModule({
   declarations: [
@@ -50,9 +51,16 @@ import { MyFilesComponent } from './my-files/my-files.component';
         deps: [HttpClient],
       },
       defaultLanguage: 'hu'
-    })
+    }),
+    NgxFilesizeModule
   ],
-  providers: [LoginService, RegistrationService, AuthService, AuthGuard, NotLoggedInGuard, {
+  providers: [
+    LoginService,
+    RegistrationService,
+    AuthService,
+    AuthGuard,
+    NotLoggedInGuard,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

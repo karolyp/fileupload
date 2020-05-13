@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8080/api'
+  API_URL: 'http://localhost:8080/api',
+  allowedFileFormats: [
+    'mp3', 'png', 'jpg', 'txt', 'docx', 'pdf', 'xls', 'xlsx', 'pptx', 'mp4', 'mkv'
+  ]
 };
 
 /*

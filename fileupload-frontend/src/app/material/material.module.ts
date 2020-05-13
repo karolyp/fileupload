@@ -15,6 +15,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const modules = [
   MatSliderModule,
@@ -33,7 +34,8 @@ const modules = [
   MatDividerModule,
   MatSidenavModule,
   MatMenuModule,
-  MatListModule
+  MatListModule,
+  MatTooltipModule
 ];
 
 @NgModule({
@@ -41,4 +43,5 @@ const modules = [
   imports: modules,
   exports: modules
 })
-export class MaterialModule { }
+export class MaterialModule {
+}
